@@ -211,14 +211,18 @@
             border-color: var(--brand-red);
         }
 
-        /* Botão WhatsApp específico */
-        .btn-whatsapp-ink {
-            @extend .ink-fill-container;
-            background: var(--whatsapp-green);
-            color: #fff;
-            border: 2px solid var(--whatsapp-green);
-            white-space: nowrap;
-        }
+      .ink-fill-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-whatsapp-ink {
+    background: var(--whatsapp-green);
+    color: #fff;
+    border: 2px solid var(--whatsapp-green);
+    white-space: nowrap;
+}
+
 
         /* Cards de Redes Sociais com Tinta */
         .social-link-card {
@@ -402,7 +406,7 @@
                 </div>
             </a>
 
-            <a href="projeto-ourvita.html" class="project-card group reveal branding lg:col-span-2 block">
+            <a href="identidadevisual.html" class="project-card group reveal branding lg:col-span-2 block">
                 <div class="relative overflow-hidden aspect-[16/9] bg-neutral-800">
                     <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70">
                     <div class="project-overlay absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-500 flex flex-col justify-center items-center text-center p-8">
@@ -412,7 +416,7 @@
                     </div>
                 </div>
                 <div class="mt-4 flex justify-between items-center px-1">
-                    <span class="font-bold uppercase tracking-tighter text-sm md:text-base">Ourvita Branding</span>
+                    <span class="font-bold uppercase tracking-tighter text-sm md:text-base">Identidade Visual</span>
                     <span class="text-[10px] text-gray-500">2025</span>
                 </div>
             </a>
