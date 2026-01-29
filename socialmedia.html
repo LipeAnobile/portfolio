@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Social Media | Luis Felipe Anobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+        :root {
+            --brand-red: #E60000;
+            --whatsapp-green: #25D366;
+            --whatsapp-dark: #128C7E;
+        }
+
+        /* Bloqueio de scroll horizontal e otimização mobile */
+        html, body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            position: relative;
+            touch-action: pan-y;
+        }
+
+        .text-display {
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .bg-red-brand { background-color: var(--brand-red); }
+        .text-red-brand { color: var(--brand-red); }
+        .border-red-brand { border-color: var(--brand-red); }
+
+        /* Estética Editorial - Grain Effect */
+        .noise::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Efeito Digitação */
+        .typing-cursor {
+            color: var(--brand-red);
+            animation: blink 1s step-end infinite;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Animações de Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: var(--brand-red); }
+
+        /* Estrutura Base para Efeito de Tinta e Pulinho */
+        .ink-fill-container {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .ink-fill-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--brand-red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: -1;
+        }
+
+        .ink-fill-container:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ink-fill-container:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--brand-red);
+        }
+
+        /* Botão WhatsApp específico */
+        .btn-whatsapp-ink {
+            background: var(--whatsapp-green);
+            color: #fff;
+            border: 2px solid var(--whatsapp-green);
+            white-space: nowrap;
+        }
+
+        .btn-whatsapp-ink:hover {
+            box-shadow: 0 10px 30px rgba(230, 0, 0, 0.4);
+        }
+
+        .whatsapp-logo {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .project-section {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .image-container {
+            overflow: hidden;
+            background: #111;
+        }
+
+        .image-container img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .image-container:hover img {
+            transform: scale(1.03);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Link de Voltar Estilizado */
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--brand-red);
+        }
+    </style>
+</head>
+<body class="noise overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 p-4 md:p-6 flex justify-between items-center mix-blend-difference">
+        <div class="flex items-center gap-6">
+            <!-- Logo linkando para index.html -->
+            <a href="index.html" class="text-xl font-bold tracking-tighter hover:text-red-brand transition">LUISFANOBILE <span class="text-red-brand">:)</span></a>
+            
+            <!-- Botão Início linkando para index.html -->
+            <a href="index.html" class="back-link flex border-l border-white/20 pl-6">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i> Início
+            </a>
+        </div>
+        <!-- Removidos: Trabalhos, Sobre, Processo para focar na galeria -->
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="min-h-[70vh] flex flex-col justify-center px-6 lg:px-20 relative pt-32">
+        <div class="z-10">
+            <p class="text-red-brand font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs mb-4 reveal">Work Category</p>
+            <h1 class="text-display text-[12vw] sm:text-[10vw] lg:text-[8vw] reveal" style="transition-delay: 200ms;">
+                <span id="typing-text"> Social Media</span><span class="typing-cursor">|</span>
+            </h1>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-8">
+                <div class="reveal" style="transition-delay: 400ms;">
+                    <p class="max-w-xl text-gray-400 text-base md:text-lg mb-6">
+                        Transformando ideias em conteúdo estratégico. Criando posts memoráveis, coerentes e prontos para dominar as redes sociais.
+                    </p>
+                    <!-- Link secundário de retorno -->
+                    <a href="index.html" class="group flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest hover:text-red-brand transition w-fit">
+                        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i> Voltar para a Home
+                    </a>
+                </div>
+                <div class="reveal mt-4 md:mt-0" style="transition-delay: 600ms;">
+                    <div class="text-[10px] font-mono uppercase tracking-tighter opacity-40">
+                        Explore os cases abaixo ↓
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO PROJECTS -->
+    <div class="space-y-32 md:space-y-64 pb-32">
+        
+        <!-- PROJETO 01 -->
+        <section class="project-section px-6 lg:px-20 reveal">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+                <div>
+                    <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 01</span>
+                    <h2 class="text-display text-4xl md:text-7xl">Ourvita Skin</h2>
+                </div>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">
+                    Branding Premium para o mercado de estética e cuidados pessoais. Foco em sofisticação e minimalismo.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+                <div class="md:col-span-12 image-container aspect-[21/9] rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200" alt="Ourvita Cover" class="w-full h-full object-cover">
+                </div>
+                <div class="md:col-span-6 image-container aspect-square rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800" alt="Ourvita Detail 1" class="w-full h-full object-cover">
+                </div>
+                <div class="md:col-span-6 image-container aspect-square rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=800" alt="Ourvita Detail 2" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETO 02 -->
+        <section class="project-section px-6 lg:px-20 reveal">
+            <div class="flex flex-col md:flex-row-reverse justify-between items-start md:items-end mb-10 gap-6">
+                <div class="text-right w-full md:w-auto">
+                    <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 02</span>
+                    <h2 class="text-display text-4xl md:text-7xl">Tech Pulse</h2>
+                </div>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">
+                    Identidade visual vibrante para startup de tecnologia. Inovação traduzida em cores e formas dinâmicas.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+                <div class="md:col-span-8 image-container aspect-[16/9] rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200" alt="Tech Pulse Branding" class="w-full h-full object-cover">
+                </div>
+                <div class="md:col-span-4 image-container aspect-[16/18] rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800" alt="Tech Pulse Stationery" class="w-full h-full object-cover">
+                </div>
+                <div class="md:col-span-12 image-container aspect-[21/7] rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1634942550612-b17823f04936?q=80&w=1200" alt="Tech Pulse Full Width" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETO 03 -->
+        <section class="project-section px-6 lg:px-20 reveal">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+                <div>
+                    <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 03</span>
+                    <h2 class="text-display text-4xl md:text-7xl">Lumia Coffe</h2>
+                </div>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">
+                    Experiência sensorial através do design. Tons terrosos e tipografia clássica para cafeteria artesanal.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div class="image-container aspect-[3/4] rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" alt="Coffee 1" class="w-full h-full object-cover">
+                </div>
+                <div class="image-container aspect-[3/4] rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800" alt="Coffee 2" class="w-full h-full object-cover">
+                </div>
+                <div class="image-container aspect-[3/4] rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1559925393-8be0ec41b595?q=80&w=800" alt="Coffee 3" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CALL TO ACTION -->
+    <section class="py-20 md:py-40 px-6 lg:px-20 text-center bg-white text-black">
+        <div class="reveal">
+            <h2 class="text-display text-4xl md:text-[6vw] mb-10 leading-tight">
+                SUA REDE SOCIAL<br>
+                <span class="text-red-brand">ESSE IMPACTO.</span>
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm flex items-center justify-center gap-3 shadow-xl">
+                    Solicitar Orçamento
+                    <svg class="whatsapp-logo" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
+                    </svg>
+                </a>
+                <!-- Botão voltar linkando para index.html -->
+                <a href="index.html" class="px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm border-2 border-black hover:bg-black hover:text-white transition">Voltar ao Início</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 px-6 lg:px-20 border-t border-white/5 text-gray-500 text-[10px] uppercase tracking-widest text-center md:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>Luis Felipe Anobile &copy; 2026.</div>
+            <div class="flex gap-6">
+                <a href="https://instagram.com/luisfanobile.psd" target="_blank" class="hover:text-white transition">Instagram</a>
+                <a href="https://www.behance.net/luisfeanobile" target="_blank" class="hover:text-white transition">Behance</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Fixo -->
+    <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl animate-bounce">
+        <svg class="whatsapp-logo w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
+        </svg>
+    </a>
+
+    <script>
+        lucide.createIcons();
+
+        // Efeito de Digitação
+        const word = "SOCIAL MEDIA";
+        let charIndex = 0;
+        const typingElement = document.getElementById('typing-text');
+        
+        function typeEffect() {
+            if (charIndex < word.length) {
+                typingElement.textContent += word.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeEffect, 150);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            typingElement.textContent = "";
+            setTimeout(typeEffect, 1000);
+        });
+
+        // Revelação no Scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
