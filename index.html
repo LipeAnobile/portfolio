@@ -252,6 +252,43 @@
         @media (min-width: 768px) {
             .whatsapp-logo { width: 24px; height: 24px; }
         }
+
+        /* Animação para rolar da direita para a esquerda */
+@keyframes scroll-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.animate-scroll-reverse {
+    display: flex;
+    width: fit-content;
+    animation: scroll-reverse 30s linear infinite;
+}
+
+/* Glitch Suave para o Processo */
+#process .glitch::before {
+    text-shadow: -1px 0 rgba(230, 0, 0, 0.5); /* Sombra vermelha mais fina e transparente */
+    animation: glitch-anim-soft 4s infinite linear alternate-reverse;
+    background: white !important; /* Casando com o fundo da seção */
+}
+
+#process .glitch::after {
+    text-shadow: 1px 0 rgba(0, 0, 0, 0.1); /* Sombra preta quase invisível */
+    animation: glitch-anim-2-soft 3s infinite linear alternate-reverse;
+    background: white !important;
+}
+
+@keyframes glitch-anim-soft {
+    0%, 100% { clip-path: inset(80% 0 1% 0); transform: translate(0); }
+    20% { clip-path: inset(20% 0 60% 0); transform: translate(-1px); }
+    40% { clip-path: inset(40% 0 40% 0); transform: translate(1px); }
+}
+
+@keyframes glitch-anim-2-soft {
+    0%, 100% { clip-path: inset(10% 0 80% 0); transform: translate(0); }
+    50% { clip-path: inset(50% 0 30% 0); transform: translate(1px); }
+}
+
     </style>
 </head>
 <body class="noise overflow-x-hidden">
@@ -268,8 +305,7 @@
     </nav>
 
     <!-- 1️⃣ HERO SECTION -->
-    <section class="min-h-screen flex flex-col justify-center px-6 lg:px-20 relative overflow-hidden">
-        <div class="z-10 mt-20">
+    <section class="min-h-screen flex flex-col justify-start pt-32 md:pt-40 px-6 lg:px-20 relative overflow-hidden">
             <p class="text-red-brand font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs mb-4 reveal">Creative Portfolio 2026</p>
             <h1 class="text-display text-[14vw] sm:text-[15vw] lg:text-[12vw] reveal" style="transition-delay: 200ms;">
                 <span id="typing-text">PORTFÓLIO</span><span class="typing-cursor">|</span>
@@ -304,46 +340,80 @@
     </section>
 
     <!-- 1.5️⃣ AUTO-SCROLL GALLERY -->
-    <section class="py-10 bg-black overflow-hidden pointer-events-none border-y border-white/5">
-        <div class="animate-scroll gap-4 md:gap-6 px-3">
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale opacity-40">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale-0 border-x border-white/5">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale opacity-60">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale opacity-30">
-                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale opacity-40">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale-0 border-x border-white/5">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale opacity-60">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
-            <div class="w-[250px] md:w-[300px] h-[350px] md:h-[400px] flex-shrink-0 grayscale opacity-30">
-                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800" class="w-full h-full object-cover rounded-sm">
-            </div>
+  <section class="bg-black overflow-hidden border-y border-white/5">
+    
+    <div class="bg-red-brand py-1.5 border-b border-black flex overflow-hidden">
+        <div class="animate-scroll-reverse whitespace-nowrap flex gap-10 items-center">
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Design Estratégico • Identidade Visual • Branding • UX/UI • Design Estratégico • Identidade Visual • Branding • UX/UI •</span>
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Design Estratégico • Identidade Visual • Branding • UX/UI • Design Estratégico • Identidade Visual • Branding • UX/UI •</span>
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Design Estratégico • Identidade Visual • Branding • UX/UI • Design Estratégico • Identidade Visual • Branding • UX/UI •</span>
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Design Estratégico • Identidade Visual • Branding • UX/UI • Design Estratégico • Identidade Visual • Branding • UX/UI •</span>
         </div>
-    </section>
+    </div>
+
+    <div class="py-8 bg-neutral-900/10">
+        <div class="animate-scroll gap-8 md:gap-10 px-4">
+            
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/6QJmyNG6/vitrine1.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/sD8SDy0M/vitrine3.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/cL4jZR2v/vitrine2.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/QdC3SZXw/vitrine5.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/hPqvCjwQ/vitrine4.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/15cGBbWw/vitrine6.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/6QJmyNG6/vitrine1.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="w-[280px] h-[280px] md:w-[320px] md:h-[320px] flex-shrink-0 relative">
+                <div class="w-full h-full bg-neutral-800 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                    <img src="https://i.postimg.cc/Jz1DPngZ/vitrine2.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bg-red-brand py-1.5 border-t border-black flex overflow-hidden">
+        <div class="animate-scroll-reverse whitespace-nowrap flex gap-10 items-center">
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Atenção • Clique • Resultado • Alta Performance • Atenção • Clique • Resultado • Alta Performance • </span>
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Atenção • Clique • Resultado • Alta Performance • Atenção • Clique • Resultado • Alta Performance •</span>
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Atenção • Clique • Resultado • Alta Performance • Atenção • Clique • Resultado • Alta Performance •</span>
+            <span class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Atenção • Clique • Resultado • Alta Performance • Atenção • Clique • Resultado • Alta Performance •</span>
+        </div>
+    </div>
+
+</section>
 
     <!-- 2️⃣ APRESENTAÇÃO / SOBRE -->
     <section id="about" class="py-20 md:py-32 px-6 lg:px-20 border-b border-white/5 bg-neutral-900/10">
@@ -380,7 +450,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-6">
             <div>
                 <span class="text-red-brand font-bold uppercase tracking-widest text-[10px] md:text-xs text-center md:text-left block">Selection 01</span>
-                <h2 class="text-display text-5xl md:text-8xl mt-4 text-center md:text-left">Selected<br>Works</h2>
+                <h2 class="text-display text-5xl md:text-8xl mt-4 text-center md:text-left">Meus<br>Trabalhos</h2>
             </div>
             <div class="flex gap-2 md:gap-4 overflow-x-auto pb-4 md:pb-0 justify-center no-scrollbar">
                 <button onclick="filterWork('all')" class="flex-shrink-0 px-4 md:px-6 py-2 border-b-2 border-red-brand text-xs md:text-sm font-bold uppercase filter-btn">Todos</button>
@@ -408,7 +478,7 @@
 
             <a href="identidadevisual.html" class="project-card group reveal branding lg:col-span-2 block">
                 <div class="relative overflow-hidden aspect-[16/9] bg-neutral-800">
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70">
+                    <img src="https://i.postimg.cc/Y9LGV1jY/dfsdfs.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-">
                     <div class="project-overlay absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-500 flex flex-col justify-center items-center text-center p-8">
                         <span class="text-red-brand font-bold uppercase tracking-[0.5em] mb-4 text-[10px] md:text-xs">Identidade Visual</span>
                         <h3 class="text-display text-3xl md:text-5xl mb-6">Ourvita Skin</h3>
@@ -455,32 +525,37 @@
 
     <!-- 4️⃣ PROCESSO CRIATIVO -->
     <section id="process" class="py-20 md:py-32 bg-white text-black">
-        <div class="px-6 lg:px-20">
-            <h2 class="text-display text-5xl md:text-9xl mb-12 md:mb-20 text-black/10 text-center md:text-left">PROCESSO</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-                <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left">
-                    <span class="text-3xl md:text-4xl font-black text-red-brand">01</span>
-                    <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Imersão</h4>
-                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Análise estratégica do público e metas do projeto.</p>
-                </div>
-                <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 200ms;">
-                    <span class="text-3xl md:text-4xl font-black text-red-brand">02</span>
-                    <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Conceito</h4>
-                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Exploração visual e narrativa editorial urbana.</p>
-                </div>
-                <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 400ms;">
-                    <span class="text-3xl md:text-4xl font-black text-red-brand">03</span>
-                    <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Visual</h4>
-                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Execução de alta fidelidade e alto impacto visual.</p>
-                </div>
-                <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 600ms;">
-                    <span class="text-3xl md:text-4xl font-black text-red-brand">04</span>
-                    <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Entrega</h4>
-                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Foco em performance e resultados de conversão real.</p>
-                </div>
+    <div class="px-6 lg:px-20">
+        <h2 class="text-display text-5xl md:text-9xl mb-12 md:mb-20 text-black/10 text-center md:text-left">PROCESSO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+            
+            <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left">
+                <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="01">01</span>
+                <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Imersão</h4>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Análise estratégica do público e metas do projeto.</p>
             </div>
+
+            <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 200ms;">
+                <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="02">02</span>
+                <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Conceito</h4>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Exploração visual e narrativa editorial urbana.</p>
+            </div>
+
+            <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 400ms;">
+                <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="03">03</span>
+                <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Visual</h4>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Execução de alta fidelidade e alto impacto visual.</p>
+            </div>
+
+            <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 600ms;">
+                <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="04">04</span>
+                <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Entrega</h4>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Foco em performance e resultados de conversão real.</p>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- 5️⃣ REDES SOCIAIS (ATUALIZADA COM TINTA E PULINHO) -->
     <section id="social" class="py-20 md:py-32 px-6 lg:px-20 border-t border-white/5">
