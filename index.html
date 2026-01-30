@@ -299,6 +299,17 @@ html, body {
 
 }
 
+ @media (max-width: 768px) {
+    .neon-glow {
+        display: none; /* Brilhos pesados raramente aparecem bem no mobile */
+    }
+    
+    /* Ou, se quiser manter, limite o tamanho */
+    .tilt-container {
+        overflow: hidden;
+    }
+}   
+
 
     </style>
 </head>
