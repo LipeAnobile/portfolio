@@ -289,6 +289,19 @@
     50% { clip-path: inset(50% 0 30% 0); transform: translate(1px); }
 }
 
+/* Garante que o body nunca role para os lados por causa de elementos absolutos */
+html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Ajuste específico para o LFA não criar scroll horizontal */
+.text-display {
+    max-width: 100vw;
+    word-break: break-all;
+}
+
     </style>
 </head>
 <body class="noise overflow-x-hidden">
