@@ -109,6 +109,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 100%;
         }
 
         .instagram-carousel {
@@ -215,6 +216,7 @@
         
         <!-- CASE 01 -->
         <section class="project-section px-6 lg:px-20 reveal">
+            <!-- Header Padronizado -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                 <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 01</span>
@@ -225,9 +227,10 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <!-- Grid Centralizado e Padronizado -->
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
                 <!-- INSTAGRAM MOCKUP -->
-                <div class="ig-mockup group">
+                <div class="ig-mockup group lg:max-w-[420px]">
                     <div class="p-3 flex items-center justify-between border-b border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 p-[1.5px]">
@@ -273,22 +276,16 @@
                                 <i data-lucide="send" class="w-6 h-6"></i>
                             </div>
                             <div class="flex gap-1" id="dots-1">
-                                <div class="indicator-dot active"></div>
-                                <div class="indicator-dot"></div>
-                                <div class="indicator-dot"></div>
-                                <div class="indicator-dot"></div>
-                                <div class="indicator-dot"></div>
+                                <div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div>
                             </div>
                             <i data-lucide="bookmark" class="w-6 h-6 text-gray-800"></i>
                         </div>
                         <div class="text-[13px] font-bold text-gray-900">4.821 curtidas</div>
-                        <div class="text-[13px] mt-1 text-gray-800">
-                            <span class="font-bold">luisfanobile.psd</span> Estratégia visual para marcas que buscam o topo.
-                        </div>
                     </div>
                 </div>
 
-                <div class="image-container aspect-square rounded-sm shadow-xl">
+                <!-- IMAGEM ESTÁTICA -->
+                <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full">
                     <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&h=1000&fit=crop" alt="Detail" class="w-full h-full object-cover">
                 </div>
             </div>
@@ -296,20 +293,20 @@
 
         <!-- CASE 02 -->
         <section class="project-section px-6 lg:px-20 reveal">
-            <div class="flex flex-col md:flex-row-reverse justify-between items-start md:items-end mb-10 gap-6">
-                <div class="text-right w-full md:w-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+                <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 02</span>
                     <h2 class="text-display text-4xl md:text-7xl">Tech Pulse</h2>
                 </div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Identidade dinâmica para tecnologia.</p>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Identidade dinâmica para o setor tecnológico.</p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                <div class="ig-mockup group">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
+                <div class="ig-mockup group lg:max-w-[420px]">
                     <div class="p-3 flex items-center justify-between border-b border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"><img src="https://i.postimg.cc/jqGZdLdw/socialmedia3.jpg" class="w-full h-full object-cover" alt="Profile"></div>
-                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">São Paulo</span></div>
+                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Tech Pulse</span></div>
                         </div>
                         <i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i>
                     </div>
@@ -324,30 +321,23 @@
                             <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1080&h=1350&fit=crop" alt="T5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div>
-                            <div class="flex gap-1" id="dots-2">
-                                <div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div>
-                            </div>
-                            <i data-lucide="bookmark" class="w-6 h-6 text-gray-800"></i>
-                        </div>
-                        <div class="text-[13px] font-bold text-gray-900">2.105 curtidas</div>
-                    </div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-2"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.105 curtidas</div></div>
                 </div>
-                <div class="image-container aspect-square rounded-sm shadow-xl"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
+                <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover">
+                </div>
             </div>
         </section>
 
         <!-- CASE 03 -->
         <section class="project-section px-6 lg:px-20 reveal">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
-                <div><span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 03</span><h2 class="text-display text-4xl md:text-7xl">Dafy Store</h2></div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Moda com narrativa urbana.</p>
+                <div><span class="text-brand-red font-mono text-xs mb-2 block uppercase tracking-widest">Case 03</span><h2 class="text-display text-4xl md:text-7xl">Dafy Store</h2></div>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Retail de moda e estética urbana.</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                <div class="ig-mockup group">
-                    <div class="p-3 flex items-center justify-between border-b border-gray-100"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-gray-200"></div><div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Retail</span></div></div><i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i></div>
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
+                <div class="ig-mockup group lg:max-w-[420px]">
+                    <div class="p-3 flex items-center justify-between border-b border-gray-100"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-gray-200"></div><div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Retail Fashion</span></div></div><i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i></div>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('3', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
                         <div class="absolute inset-y-0 right-3 z-20 flex items-center"><button onclick="scrollCarousel('3', 1)" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
@@ -359,27 +349,21 @@
                             <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=1080&h=1350&fit=crop" alt="D5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div>
-                            <div class="flex gap-1" id="dots-3"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div>
-                        </div>
-                        <div class="text-[13px] font-bold text-gray-900">1.890 curtidas</div>
-                    </div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-3"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">1.890 curtidas</div></div>
                 </div>
-                <div class="image-container aspect-square rounded-sm shadow-xl"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
+                <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
             </div>
         </section>
 
         <!-- CASE 04 -->
         <section class="project-section px-6 lg:px-20 reveal">
-            <div class="flex flex-col md:flex-row-reverse justify-between items-start md:items-end mb-10 gap-6">
-                <div class="text-right w-full md:w-auto"><span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 04</span><h2 class="text-display text-4xl md:text-7xl">Zenith Watch</h2></div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Luxo em detalhes macro.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+                <div><span class="text-brand-red font-mono text-xs mb-2 block uppercase tracking-widest">Case 04</span><h2 class="text-display text-4xl md:text-7xl">Zenith Watch</h2></div>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Produto de luxo e detalhes de precisão.</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                <div class="ig-mockup group">
-                    <div class="p-3 flex items-center justify-between border-b border-gray-100"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-gray-200"></div><div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Luxury</span></div></div><i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i></div>
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
+                <div class="ig-mockup group lg:max-w-[420px]">
+                    <div class="p-3 flex items-center justify-between border-b border-gray-100"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-gray-200"></div><div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Lux Portfolio</span></div></div><i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i></div>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('4', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
                         <div class="absolute inset-y-0 right-3 z-20 flex items-center"><button onclick="scrollCarousel('4', 1)" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
@@ -391,26 +375,20 @@
                             <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=1080&h=1350&fit=crop" alt="W5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div>
-                            <div class="flex gap-1" id="dots-4"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div>
-                        </div>
-                        <div class="text-[13px] font-bold text-gray-900">3.442 curtidas</div>
-                    </div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-4"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">3.442 curtidas</div></div>
                 </div>
-                <div class="image-container aspect-square rounded-sm shadow-xl"><img src="https://images.unsplash.com/photo-1508685096489-7aac29625a3b?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
+                <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full"><img src="https://images.unsplash.com/photo-1508685096489-7aac29625a3b?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
             </div>
         </section>
 
         <!-- CASE 05 -->
         <section class="project-section px-6 lg:px-20 reveal">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
-                <div><span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 05</span><h2 class="text-display text-4xl md:text-7xl">Infoprodutos</h2></div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Curadoria visual para autoridade.</p>
+                <div><span class="text-brand-red font-mono text-xs mb-2 block uppercase tracking-widest">Case 05</span><h2 class="text-display text-4xl md:text-7xl">Infoprodutos</h2></div>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Visual estratégico para mentores.</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                <div class="ig-mockup group">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
+                <div class="ig-mockup group lg:max-w-[420px]">
                     <div class="p-3 flex items-center justify-between border-b border-gray-100"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-gray-200"></div><div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Mentoria</span></div></div><i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i></div>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('5', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
@@ -423,26 +401,20 @@
                             <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1080&h=1350&fit=crop" alt="A5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div>
-                            <div class="flex gap-1" id="dots-5"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div>
-                        </div>
-                        <div class="text-[13px] font-bold text-gray-900">5.912 curtidas</div>
-                    </div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-5"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">5.912 curtidas</div></div>
                 </div>
-                <div class="image-container aspect-square rounded-sm shadow-xl"><img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
+                <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full"><img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
             </div>
         </section>
 
         <!-- CASE 06 -->
         <section class="project-section px-6 lg:px-20 reveal">
-            <div class="flex flex-col md:flex-row-reverse justify-between items-start md:items-end mb-10 gap-6">
-                <div class="text-right w-full md:w-auto"><span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 06</span><h2 class="text-display text-4xl md:text-7xl">Urban Coffee</h2></div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Estética rústica para gastronomia.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+                <div><span class="text-brand-red font-mono text-xs mb-2 block uppercase tracking-widest">Case 06</span><h2 class="text-display text-4xl md:text-7xl">Urban Coffee</h2></div>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Criação de autoridade local para gastronomia.</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                <div class="ig-mockup group">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
+                <div class="ig-mockup group lg:max-w-[420px]">
                     <div class="p-3 flex items-center justify-between border-b border-gray-100"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-gray-200"></div><div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Coffee Culture</span></div></div><i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i></div>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('6', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
@@ -455,15 +427,9 @@
                             <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1080&h=1350&fit=crop" alt="C5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div>
-                            <div class="flex gap-1" id="dots-6"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div>
-                        </div>
-                        <div class="text-[13px] font-bold text-gray-900">1.244 curtidas</div>
-                    </div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-6"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">1.244 curtidas</div></div>
                 </div>
-                <div class="image-container aspect-square rounded-sm shadow-xl"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
+                <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover"></div>
             </div>
         </section>
 
