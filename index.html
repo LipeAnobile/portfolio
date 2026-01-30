@@ -296,39 +296,10 @@ html, body {
     position: relative;
     /* overflow: clip é mais forte que hidden em alguns browsers mobile */
     overflow-x: clip !important; 
+
 }
 
-/* Container específico para o LFA */
-.lfa-wrapper {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Corta o que sair daqui */
-    pointer-events: none;
-    z-index: 0;
-}
 
-.lfa-text-giant {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    line-height: 0.7;
-    font-weight: 900;
-    color: white;
-    opacity: 0.03;
-    /* Usamos vw para ser responsivo e transform para não empurrar o layout */
-    font-size: 60vw;
-    transform: translate(25%, 15%);
-    white-space: nowrap;
-}
-
-@media (min-width: 768px) {
-    .lfa-text-giant {
-        font-size: 40vw;
-        transform: translate(15%, 10%);
-    }
-}
     </style>
 </head>
 <body class="noise overflow-x-hidden">
@@ -374,9 +345,6 @@ html, body {
             </div>
         </div>
         
-       <div class="lfa-wrapper">
-    <span class="lfa-text-giant text-display">LFA</span>
-</div>
     </section>
 
     <!-- 1.5️⃣ AUTO-SCROLL GALLERY -->
@@ -541,7 +509,7 @@ html, body {
                     </div>
                 </div>
                 <div class="mt-4 flex justify-between items-center px-1">
-                    <span class="font-bold uppercase tracking-tighter text-sm md:text-base">Web Design</span>
+                    <span class="font-bold uppercase tracking-tighter text-sm md:text-base">Web Design - Landing Page</span>
                     <span class="text-[10px] text-gray-500">2026</span>
                 </div>
             </a>
@@ -556,7 +524,7 @@ html, body {
                     </div>
                 </div>
                 <div class="mt-4 flex justify-between items-center px-1">
-                    <span class="font-bold uppercase tracking-tighter text-sm md:text-base">Heroes Series</span>
+                    <span class="font-bold uppercase tracking-tighter text-sm md:text-base">Art Music</span>
                     <span class="text-[10px] text-gray-500">2025</span>
                 </div>
             </a>
@@ -572,25 +540,25 @@ html, body {
             <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left">
                 <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="01">01</span>
                 <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Imersão</h4>
-                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Análise estratégica do público e metas do projeto.</p>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Mergulho na marca para definir estratégia e direção criativa.</p>
             </div>
 
             <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 200ms;">
                 <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="02">02</span>
                 <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Conceito</h4>
-                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Exploração visual e narrativa editorial urbana.</p>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Estruturamos a ideia que vai guiar toda a comunicação.</p>
             </div>
 
             <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 400ms;">
                 <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="03">03</span>
                 <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Visual</h4>
-                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Execução de alta fidelidade e alto impacto visual.</p>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Design pensado para destacar e gerar reconhecimento.</p>
             </div>
 
             <div class="reveal border-t-4 border-black pt-6 md:pt-8 text-center md:text-left" style="transition-delay: 600ms;">
                 <span class="glitch text-3xl md:text-4xl font-black text-red-brand" data-text="04">04</span>
                 <h4 class="text-lg md:text-xl font-bold uppercase mt-4 mb-2">Entrega</h4>
-                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Foco em performance e resultados de conversão real.</p>
+                <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Projeto pronto para colocar a marca em outro nível.</p>
             </div>
 
         </div>
@@ -612,7 +580,7 @@ html, body {
                 </a>
 
                 <!-- TikTok -->
-                <a href="#" target="_blank" class="ink-fill-container social-link-card group p-6 md:p-10 rounded-xl flex flex-col items-center justify-center text-center gap-3 md:gap-4">
+                <a href="https://www.tiktok.com/@lipeanobile?_r=1&_t=ZS-93Uhp0BfM01" target="_blank" class="ink-fill-container social-link-card group p-6 md:p-10 rounded-xl flex flex-col items-center justify-center text-center gap-3 md:gap-4">
                     <i data-lucide="music" class="w-8 h-8 md:w-10 md:h-10"></i>
                     <span class="font-bold uppercase tracking-widest text-[10px] md:text-sm">TikTok</span>
                     <span class="text-[8px] md:text-[10px] opacity-40 group-hover:opacity-100 transition-opacity">@lipeanobile</span>
@@ -657,8 +625,8 @@ html, body {
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>Luis Felipe Anobile &copy; 2026.</div>
             <div class="flex gap-6">
-                <a href="#" class="hover:text-white transition">Instagram</a>
-                <a href="#" class="hover:text-white transition">Behance</a>
+                <a href="https://instagram.com/luisfanobile.psd" class="hover:text-white transition">Instagram</a>
+                <a href="https://www.behance.net/luisfeanobile" class="hover:text-white transition">Behance</a>
             </div>
         </div>
     </footer>
