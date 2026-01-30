@@ -317,6 +317,64 @@
         }
         .ink-fill-container:hover::before { transform: scaleX(1); }
         .btn-whatsapp-ink { background: var(--whatsapp-green); color: #fff; border: 2px solid var(--whatsapp-green); }
+/* Adicione este comportamento de escala e pulo que existe na outra página */
+.ink-fill-container {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ink-fill-container:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--brand-red);
+}
+
+/* Garante que o preenchimento de tinta funcione corretamente */
+.ink-fill-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--brand-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: -1;
+}
+
+.ink-fill-container:hover::before {
+    transform: scaleX(1);
+}
+
+/* Classe para a cor da marca */
+.text-red-brand { color: var(--brand-red); }
+
+/* Variante de tinta PRETA para o botão Voltar */
+.ink-fill-container.ink-black::before {
+    background: #000;
+}
+
+.ink-fill-container.ink-black:hover {
+    color: #fff !important; /* Força o texto a ficar branco */
+    border-color: #000;
+}
+
+/* Garante que o texto fique por cima da "tinta" */
+.relative.z-10 {
+    position: relative;
+    z-index: 10;
+}
+
+/* Link de Voltar Estilizado */
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
     </style>
 </head>
 <body class="noise overflow-x-hidden">
@@ -343,6 +401,10 @@
                     Experiência visual de alto impacto. Clique nos projetos para visualizar as secções completas no nosso simulador.
                 </p>
             </div>
+            <!-- Link secundário de retorno -->
+                    <a href="index.html" class="group flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest hover:text-red-brand transition w-fit">
+                        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i> Voltar para a Home
+                    </a>
         </div>
     </section>
 
@@ -352,7 +414,7 @@
             
             <!-- PROJETO 01 -->
             <div class="reveal lp-card rounded-xl group" onclick="openLP([
-                'https://i.postimg.cc/1tCsbX20/lp1.jpg',
+                'https://i.postimg.cc/Ss1RpDHJ/lp1.jpg',
                 'https://i.postimg.cc/Jn4RTZ6T/lp2.jpg',
                 'https://i.postimg.cc/mD2TdCXm/lp3.jpg',
                 'https://i.postimg.cc/ZRKJfp7p/lp4.jpg',
@@ -361,7 +423,7 @@
                 'https://i.postimg.cc/50NfPL7H/lp7.jpg',
                 'https://i.postimg.cc/635BHnjW/lp8.jpg',
                 'https://i.postimg.cc/ZR74Xn2r/lp9.jpg',
-            ], 'Ourvita Skin')">
+            ], 'Lash Designer')">
                 <div class="overlay">
                     <div class="text-center text-white">
                         <i data-lucide="monitor" class="w-8 h-8 mx-auto mb-2"></i>
@@ -369,11 +431,11 @@
                     </div>
                 </div>
                 <div class="aspect-[16/10] overflow-hidden bg-[#111]">
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                    <img src="https://i.postimg.cc/FR7J0Hz9/vitrine7.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
                 </div>
                 <div class="p-6 bg-[#111]">
                     <span class="text-red-brand font-mono text-[10px] uppercase tracking-widest block mb-2">Health & Beauty</span>
-                    <h3 class="text-xl font-bold">Ourvita Skin</h3>
+                    <h3 class="text-xl font-bold">Lash Designer</h3>
                 </div>
             </div>
 
@@ -460,7 +522,7 @@
                 </div>
 
                 <div class="monitor-bottom-bar">
-                    <div class="monitor-logo italic">ANOBILE DISPLAY</div>
+                    <div class="monitor-logo italic">L F A</div>
                     <div class="power-led"></div>
                 </div>
             </div>
@@ -474,14 +536,15 @@
     <section class="py-20 md:py-40 px-6 lg:px-20 text-center bg-white text-black">
         <div class="reveal">
             <h2 class="text-display text-[10vw] md:text-[6vw] mb-10 leading-tight">
-                VAMOS CRIAR<br><span class="text-red-brand">ALGO ÚNICO.</span>
+                 PÁGINAS QUE GERAM <br><span class="text-red-brand">RESULTADO.</span>
             </h2>
             <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <a href="https://wa.me/5519999708373" target="_blank" class="w-full md:w-auto ink-fill-container btn-whatsapp-ink px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 shadow-xl">
-                    Solicitar Orçamento
-                    <i data-lucide="message-circle" class="w-5 h-5"></i>
-                </a>
-                <a href="index.html" class="w-full md:w-auto px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs border-2 border-black hover:bg-black hover:text-white transition">Voltar Home</a>
+                <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm flex items-center justify-center gap-3 shadow-xl">
+    Solicitar Orçamento
+    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"> <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
+    </svg>
+</a>
+                <a href="index.html" class="px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm border-2 border-black hover:bg-black hover:text-white transition">Voltar ao Início</a>
             </div>
         </div>
     </section>
@@ -496,6 +559,13 @@
             </div>
         </div>
     </footer>
+
+        <!-- Botão WhatsApp Fixo -->
+    <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl animate-bounce">
+        <svg class="whatsapp-logo w-6 h-6 md:w-8 md:h-8 fill-white" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
+        </svg>
+    </a>
 
     <script>
         lucide.createIcons();
