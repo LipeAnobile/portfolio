@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Music Design | Luis Felipe Anobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+        :root {
+            --brand-red: #E60000;
+            --whatsapp-green: #25D366;
+        }
+
+        html, body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .text-display {
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .text-red-brand { color: var(--brand-red); }
+
+        /* Estética Editorial - Grain Effect */
+        .noise::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 100;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        .typing-cursor {
+            color: var(--brand-red);
+            animation: blink 1s step-end infinite;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* EFEITO VINIL */
+        .album-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 1/1;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .vinyl-disc {
+            position: absolute;
+            top: 5%;
+            right: 0;
+            width: 90%;
+            height: 90%;
+            background: #111;
+            background-image: repeating-radial-gradient(circle at center, #111, #111 2px, #181818 3px, #111 4px);
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes spin {
+            from { transform: translateX(40%) rotate(0deg); }
+            to { transform: translateX(40%) rotate(360deg); }
+        }
+
+        /* Mobile specific behavior for vinyl */
+        @media (max-width: 768px) {
+            .vinyl-disc {
+                transform: translateX(40%);
+                animation: spin 8s linear infinite;
+            }
+        }
+
+        .vinyl-label {
+            width: 30%;
+            height: 30%;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #000;
+            position: relative;
+        }
+
+        .vinyl-label::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 15%; height: 15%;
+            background: #0a0a0a;
+            border-radius: 50%;
+        }
+
+        .album-cover {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .view-project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.4; /* Visível levemente antes do hover */
+            transition: all 0.3s ease;
+            z-index: 3;
+            backdrop-filter: blur(2px);
+        }
+
+        .album-wrapper:hover .view-project-overlay {
+            opacity: 1;
+            backdrop-filter: blur(6px);
+        }
+
+        .album-wrapper:hover .vinyl-disc {
+            transform: translateX(40%) rotate(180deg);
+        }
+
+        /* Desktop specific hover for cover */
+        @media (min-width: 769px) {
+            .album-wrapper:hover .album-cover {
+                transform: translateX(-5%);
+            }
+        }
+
+        /* EFEITO TINTA */
+        .ink-fill-container {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .ink-fill-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--brand-red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: -1;
+        }
+
+        .ink-fill-container:hover::before { transform: scaleX(1); }
+        .ink-fill-container:hover { transform: translateY(-8px) scale(1.02); }
+
+        .btn-whatsapp-ink { background: var(--whatsapp-green); color: #fff; border: 2px solid var(--whatsapp-green); }
+        .btn-whatsapp-ink:hover { box-shadow: 0 10px 30px rgba(230, 0, 0, 0.4); }
+
+        .ink-black::before { background: #000; }
+        .ink-black:hover { color: #fff !important; border-color: #000; }
+
+        .relative.z-10 { position: relative; z-index: 10; }
+
+        /* LFA BACKGROUND CORREÇÃO MOBILE */
+        .lfa-safe-zone {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .lfa-text-giant {
+            position: absolute;
+            right: 0;
+            bottom: -5%;
+            font-size: 55vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            transform: translate(25%, 5%);
+            white-space: nowrap;
+        }
+
+        .project-section {
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body class="noise">
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="fixed top-0 w-full z-[1000] p-4 md:p-6 flex justify-between items-center mix-blend-difference">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-lg md:text-xl font-bold tracking-tighter hover:text-red-brand transition uppercase">LUISFANOBILE</a>
+            <a href="index.html" class="flex items-center gap-2 text-[10px] uppercase font-bold tracking-widest border-l border-white/20 pl-4 hover:text-red-brand transition">
+                <i data-lucide="chevron-left" class="w-3 h-3"></i> Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="min-h-[70vh] flex flex-col justify-center px-6 lg:px-20 relative pt-32 pb-10">
+        <div class="z-10">
+            <p class="text-red-brand font-bold uppercase tracking-[0.3em] text-[10px] mb-4 reveal">Sound Visualization</p>
+            <h1 class="text-display text-[14vw] sm:text-[10vw] lg:text-[7vw] reveal leading-[0.85]" style="transition-delay: 200ms;">
+                <span id="typing-text">Music Design</span><span class="typing-cursor">|</span>
+            </h1>
+            <div class="max-w-2xl mt-8 reveal" style="transition-delay: 400ms;">
+                <p class="text-gray-400 text-sm md:text-lg mb-8 leading-relaxed">
+                    Visualizando o som através do design. Explore abaixo meus projetos de direção criativa e artes de capa para a indústria musical.
+                </p>
+            </div>
+        </div>
+        <!-- LFA Background -->
+        <div class="lfa-safe-zone">
+            <span class="lfa-text-giant text-display text-red-brand">LFA</span>
+        </div>
+    </section>
+
+    <!-- GRID INICIAL (2 DISCOS) -->
+    <section class="px-6 lg:px-20 pb-48">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24 lg:gap-32">
+            
+            <!-- ÁLBUM 01 -->
+            <a href="#Romeu-e-Julieta-Jerbs" class="reveal block group">
+                <div class="album-wrapper">
+                    <div class="vinyl-disc">
+                        <div class="vinyl-label" style="background-image: url('https://i.postimg.cc/QdC3SZXw/vitrine5.jpg')"></div>
+                    </div>
+                    <div class="album-cover">
+                        <div class="view-project-overlay">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-white border border-white/30 px-6 py-3 bg-black/20">Visualizar Projeto</span>
+                        </div>
+                        <img src="https://i.postimg.cc/QdC3SZXw/vitrine5.jpg" alt="#Romeu-e-Julieta-Jerbs" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <span class="text-red-brand font-mono text-[10px] uppercase tracking-[0.3em] mb-2 block">Cover Art // 01</span>
+                    <h3 class="text-3xl font-black uppercase tracking-tighter group-hover:text-red-brand transition">Jerbs - Romeu & Julieta</h3>
+                </div>
+            </a>
+
+            <!-- ÁLBUM 02 -->
+            <a href="#projeto-texture" class="reveal block group" style="transition-delay: 150ms;">
+                <div class="album-wrapper">
+                    <div class="vinyl-disc">
+                        <div class="vinyl-label" style="background-image: url('https://i.postimg.cc/mZXwk47H/Rectangle-2.jpg')"></div>
+                    </div>
+                    <div class="album-cover">
+                        <div class="view-project-overlay">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-white border border-white/30 px-6 py-3 bg-black/20">Visualizar Projeto</span>
+                        </div>
+                        <img src="https://i.postimg.cc/mZXwk47H/Rectangle-2.jpg" alt="Lost in Texture Cover" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <span class="text-red-brand font-mono text-[10px] uppercase tracking-[0.3em] mb-2 block">Cover Art // 02</span>
+                    <h3 class="text-3xl font-black uppercase tracking-tighter group-hover:text-red-brand transition">Lost in Texture</h3>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+<!-- SECTION EDITORIAL -->
+    <section class="py-32 bg-[#0d0d0d] px-6 lg:px-20 border-y border-white/5">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2 reveal">
+                <h2 class="text-display text-5xl md:text-7xl mb-8">O SOM<br><span class="text-red-brand text-display">GANHA FORMA.</span></h2>
+                <p class="text-gray-400 leading-relaxed mb-6">Trabalho com manipulação de imagem, colagem digital e tipografia experimental para criar peças que saltam das prateleiras digitais e físicas.</p>
+                <div class="flex gap-4 opacity-50">
+                    <div class="px-3 py-1 border border-white/20 text-[9px] uppercase font-bold tracking-widest">Analog Textures</div>
+                    <div class="px-3 py-1 border border-white/20 text-[9px] uppercase font-bold tracking-widest">Glitch Art</div>
+                    <div class="px-3 py-1 border border-white/20 text-[9px] uppercase font-bold tracking-widest">Print Ready</div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 grid grid-cols-2 gap-4 reveal" style="transition-delay: 200ms;">
+                <div class="aspect-square bg-neutral-900 rounded-lg overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                    <img src="https://images.unsplash.com/photo-1514525253344-f814d873ee41?q=80&w=600" class="w-full h-full object-cover">
+                </div>
+                <div class="aspect-square bg-neutral-900 rounded-lg overflow-hidden translate-y-8 grayscale hover:grayscale-0 transition-all duration-700">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SESSÃO DETALHADA: PROJETO 01 -->
+    <section id="Romeu-e-Julieta-Jerbs" class="project-section py-32 px-6 lg:px-20 bg-[#080808]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-16 items-start">
+                <div class="lg:w-1/2 lg:sticky lg:top-32">
+                    <span class="text-red-brand font-bold uppercase tracking-widest text-xs mb-4 block">Case Study 01</span>
+                    <h2 class="text-display text-5xl md:text-8xl mb-8">ROMEU<br>& JULIETA</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-md">
+                        Projeto desenvolvido para o artista Jerbs para o lançamento de seu EP com quatro faixas. Inspirada no tema Romeu e Julieta, a proposta foi representar o artista como o próprio Romeu, incorporando suas características em uma composição com estética de pintura clássica. O resultado traz influência do impressionismo, criando uma atmosfera dramática e romântica que traduz visualmente a identidade do projeto.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-10">
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-widest text-gray-600 mb-2">Artist</span>
+                            <span class="font-bold uppercase">Jerbs</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-widest text-gray-600 mb-2">Services</span>
+                            <span class="font-bold uppercase">Identidade Visual</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 space-y-12">
+                    <div class="reveal rounded-xl overflow-hidden bg-neutral-900 aspect-square">
+                        <img src="https://i.postimg.cc/QdC3SZXw/vitrine5.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="reveal aspect-[4/5] bg-neutral-900 rounded-lg overflow-hidden">
+                            <img src="https://i.postimg.cc/pLy3rk9K/jerbfx.jpg" class="w-full h-full object-cover opacity-100 hover:opacity-100 transition duration-700">
+                        </div>
+                        <div class="reveal aspect-[4/5] bg-neutral-900 rounded-lg overflow-hidden translate-y-12">
+                            <img src="https://i.postimg.cc/BvPWYNs7/jerbslp.jpg" class="w-full h-full object-cover opacity-100 hover:opacity-100 transition duration-700">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SESSÃO DETALHADA: PROJETO 02 -->
+    <section id="projeto-texture" class="project-section py-32 px-6 lg:px-20 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row-reverse gap-16 items-start">
+                <div class="lg:w-1/2 lg:sticky lg:top-32 text-right lg:text-left">
+                    <span class="text-red-brand font-bold uppercase tracking-widest text-xs mb-4 block">Case Study 02</span>
+                    <h2 class="text-display text-5xl md:text-8xl mb-8">ESTAÇÃO<br>TRAP 019s</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-md ml-auto lg:ml-0">
+                        Projeto desenvolvido para o Estação Trap Festival, explorando tipografia experimental e colagem digital para criar uma identidade visual com estética crua e urbana. A composição utiliza distorções e texturas analógicas, transmitindo a energia intensa e a atmosfera do evento.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-10 text-left">
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-widest text-gray-600 mb-2">EVENTO</span>
+                            <span class="font-bold uppercase">ESTAÇÃO TRAP 019"</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-widest text-gray-600 mb-2">Year</span>
+                            <span class="font-bold uppercase">2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 space-y-12">
+                    <div class="reveal rounded-xl overflow-hidden bg-neutral-900 aspect-square">
+                        <img src="https://i.postimg.cc/mZXwk47H/Rectangle-2.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="reveal w-full aspect-[16/9] bg-neutral-900 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=1200" class="w-full h-full object-cover opacity-40 hover:opacity-100 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="py-20 md:py-40 px-6 lg:px-20 text-center bg-white text-black">
+        <div class="reveal">
+            <h2 class="text-display text-[10vw] md:text-[6vw] mb-10 leading-tight">
+                VISUALIZE O SEU <br><span class="text-red-brand">PRÓXIMO DROP.</span>
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm flex items-center justify-center gap-3 shadow-xl w-full md:w-auto">
+                    <span class="relative z-10">Solicitar Orçamento</span>
+                    <svg class="w-4 h-4 fill-white relative z-10" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
+                    </svg>
+                </a>
+                <a href="index.html" class="ink-fill-container ink-black w-full md:w-auto px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs border-2 border-black flex items-center justify-center transition-all duration-300">
+                    <span class="relative z-10">Voltar ao Início</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 px-6 lg:px-20 border-t border-white/5 text-gray-500 text-[10px] uppercase tracking-widest text-center md:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>Luis Felipe Anobile &copy; 2026.</div>
+            <div class="flex gap-6">
+                <a href="https://instagram.com/luisfanobile.psd" target="_blank" class="hover:text-white transition">Instagram</a>
+                <a href="https://www.behance.net/luisfeanobile" target="_blank" class="hover:text-white transition">Behance</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÃO WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl animate-bounce">
+        <svg class="w-6 h-6 md:w-8 md:h-8 fill-white relative z-10" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
+        </svg>
+    </a>
+
+    <script>
+        lucide.createIcons();
+
+        // Efeito de Digitação
+        const typingElement = document.getElementById('typing-text');
+        const textToType = "Music Design";
+        let charIdx = 0;
+        function type() {
+            if (charIdx < textToType.length) {
+                typingElement.textContent += textToType.charAt(charIdx);
+                charIdx++;
+                setTimeout(type, 100);
+            }
+        }
+        window.addEventListener('load', () => {
+            typingElement.textContent = "";
+            setTimeout(type, 500);
+        });
+
+        // Observer para revelação
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(r => observer.observe(r));
+    </script>
+</body>
+</html>
