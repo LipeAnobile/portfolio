@@ -16,6 +16,17 @@
             --whatsapp-dark: #128C7E;
         }
 
+        .cursor-custom {
+            width: 20px;
+            height: 20px;
+            background: var(--brand-red);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease; }
+
         /* Bloqueio de scroll horizontal e otimização mobile */
         html, body {
             background-color: #0a0a0a;
@@ -210,6 +221,9 @@
         </div>
     </section>
 
+        <div id="cursor" class="cursor-custom hidden lg:block"></div>
+
+
     <!-- PORTFOLIO PROJECTS -->
     <div class="space-y-32 md:space-y-64 pb-32">
         
@@ -357,6 +371,15 @@
             });
         }, { threshold: 0.1 });
         reveals.forEach(el => revealObserver.observe(el));
+
+         const cursor = document.getElementById('cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+        }
+
     </script>
 </body>
 </html>
