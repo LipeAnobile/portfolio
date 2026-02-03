@@ -223,9 +223,24 @@
         .project-section {
             border-top: 1px solid rgba(255,255,255,0.05);
         }
+
+        .cursor-custom {
+            width: 20px;
+            height: 20px;
+            background: var(--brand-red);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease; }
+
     </style>
 </head>
 <body class="noise">
+
+     <div id="cursor" class="cursor-custom hidden lg:block"></div>
+
 
     <!-- NAVEGAÇÃO -->
     <nav class="fixed top-0 w-full z-[1000] p-4 md:p-6 flex justify-between items-center mix-blend-difference">
@@ -274,7 +289,7 @@
                     </div>
                 </div>
                 <div class="mt-8 text-center">
-                    <span class="text-red-brand font-mono text-[10px] uppercase tracking-[0.3em] mb-2 block">Cover Art // 01</span>
+                    <span class="text-red-brand font-mono text-[10px] uppercase tracking-[0.3em] mb-2 block">Álbum Art // 01</span>
                     <h3 class="text-3xl font-black uppercase tracking-tighter group-hover:text-red-brand transition">Jerbs - Romeu & Julieta</h3>
                 </div>
             </a>
@@ -289,12 +304,12 @@
                         <div class="view-project-overlay">
                             <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-white border border-white/30 px-6 py-3 bg-black/20">Visualizar Projeto</span>
                         </div>
-                        <img src="https://i.postimg.cc/mZXwk47H/Rectangle-2.jpg" alt="Lost in Texture Cover" class="w-full h-full object-cover">
+                        <img src="https://i.postimg.cc/mZXwk47H/Rectangle-2.jpg" alt="ESTAÇÃO TRAP" class="w-full h-full object-cover">
                     </div>
                 </div>
                 <div class="mt-8 text-center">
-                    <span class="text-red-brand font-mono text-[10px] uppercase tracking-[0.3em] mb-2 block">Cover Art // 02</span>
-                    <h3 class="text-3xl font-black uppercase tracking-tighter group-hover:text-red-brand transition">Lost in Texture</h3>
+                    <span class="text-red-brand font-mono text-[10px] uppercase tracking-[0.3em] mb-2 block">Festival Art // 02</span>
+                    <h3 class="text-3xl font-black uppercase tracking-tighter group-hover:text-red-brand transition">ESTAÇÃO TRAP</h3>
                 </div>
             </a>
 
@@ -315,10 +330,10 @@
             </div>
             <div class="lg:w-1/2 grid grid-cols-2 gap-4 reveal" style="transition-delay: 200ms;">
                 <div class="aspect-square bg-neutral-900 rounded-lg overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                    <img src="https://images.unsplash.com/photo-1514525253344-f814d873ee41?q=80&w=600" class="w-full h-full object-cover">
+                    <img src="https://i.postimg.cc/Hn8chJtF/luisfanobile-music.jpg" class="w-full h-full object-cover">
                 </div>
                 <div class="aspect-square bg-neutral-900 rounded-lg overflow-hidden translate-y-8 grayscale hover:grayscale-0 transition-all duration-700">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600" class="w-full h-full object-cover">
+                    <img src="https://i.postimg.cc/nL5QYY4B/logo-photoshop-illustrator-luisfanobilepsd.jpg" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -369,7 +384,7 @@
             <div class="flex flex-col lg:flex-row-reverse gap-16 items-start">
                 <div class="lg:w-1/2 lg:sticky lg:top-32 text-right lg:text-left">
                     <span class="text-red-brand font-bold uppercase tracking-widest text-xs mb-4 block">Case Study 02</span>
-                    <h2 class="text-display text-5xl md:text-8xl mb-8">ESTAÇÃO<br>TRAP 019s</h2>
+                    <h2 class="text-display text-5xl md:text-8xl mb-8">ESTAÇÃO<br>TRAP 019</h2>
                     <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-md ml-auto lg:ml-0">
                         Projeto desenvolvido para o Estação Trap Festival, explorando tipografia experimental e colagem digital para criar uma identidade visual com estética crua e urbana. A composição utiliza distorções e texturas analógicas, transmitindo a energia intensa e a atmosfera do evento.
                     </p>
@@ -389,7 +404,7 @@
                         <img src="https://i.postimg.cc/mZXwk47H/Rectangle-2.jpg" class="w-full h-full object-cover">
                     </div>
                     <div class="reveal w-full aspect-[16/9] bg-neutral-900 rounded-lg overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=1200" class="w-full h-full object-cover opacity-40 hover:opacity-100 transition duration-700">
+                        <img src="https://i.postimg.cc/x1c7F9DD/estacao-trap.jpg" class="w-full h-full transition duration-700">
                     </div>
                 </div>
             </div>
@@ -437,6 +452,14 @@
 
     <script>
         lucide.createIcons();
+
+        const cursor = document.getElementById('cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+        }
 
         // Efeito de Digitação
         const typingElement = document.getElementById('typing-text');
