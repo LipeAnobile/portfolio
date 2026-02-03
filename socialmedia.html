@@ -177,6 +177,18 @@
         @media (max-width: 768px) {
             .nav-btn { opacity: 1; }
         }
+
+        .cursor-custom {
+            width: 20px;
+            height: 20px;
+            background: var(--brand-red);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease; }
+
     </style>
 </head>
 <body class="noise overflow-x-hidden">
@@ -190,6 +202,9 @@
             </a>
         </div>
     </nav>
+
+    <div id="cursor" class="cursor-custom hidden lg:block"></div>
+
 
     <!-- HERO SECTION -->
     <section class="min-h-[70vh] flex flex-col justify-center px-6 lg:px-20 relative pt-32">
@@ -220,10 +235,10 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                 <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 01</span>
-                    <h2 class="text-display text-4xl md:text-7xl">Ourvita Skin</h2>
+                    <h2 class="text-display text-4xl md:text-7xl">PERFIL PESSOAL</h2>
                 </div>
                 <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">
-                    Estética premium e minimalista. Foco na sofisticação do cuidado pessoal.
+                    Post carrossel com intuito de compartilhar dicas com Designers.
                 </p>
             </div>
             
@@ -259,7 +274,7 @@
                         <div class="instagram-carousel no-scrollbar" id="carousel-1" data-carousel="1">
                             <div class="instagram-slide">
                                 <img src="https://i.postimg.cc/hP4gzBxd/GRADIENTES1.jpg" alt="P1" class="w-full h-full object-cover">
-                                <div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div>
+                                <div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta pro lado! <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div>
                             </div>
                             <div class="instagram-slide"><img src="https://i.postimg.cc/L64RYpfW/GRADIENTES2.jpg" alt="P2" class="w-full h-full object-cover"></div>
                             <div class="instagram-slide"><img src="https://i.postimg.cc/tCRyZjPm/GRADIENTES4.jpg" alt="P3" class="w-full h-full object-cover"></div>
@@ -296,9 +311,9 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                 <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 02</span>
-                    <h2 class="text-display text-4xl md:text-7xl">Tech Pulse</h2>
+                    <h2 class="text-display text-4xl md:text-7xl">PERFIL PESSOAL</h2>
                 </div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Identidade dinâmica para o setor tecnológico.</p>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Post carrossel educativo sobre inteligência artificial.</p>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
@@ -306,7 +321,7 @@
                     <div class="p-3 flex items-center justify-between border-b border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"><img src="https://i.postimg.cc/sfQpxH5X/sadasd.png" class="w-full h-full object-cover" alt="Profile"></div>
-                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Tech Pulse</span></div>
+                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Brasil</span></div>
                         </div>
                         <i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i>
                     </div>
@@ -314,17 +329,17 @@
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('2', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
                         <div class="absolute inset-y-0 right-3 z-20 flex items-center"><button onclick="scrollCarousel('2', 1)" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
                         <div class="instagram-carousel no-scrollbar" id="carousel-2" data-carousel="2">
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&h=1350&fit=crop" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
-                            <div class="instagram-slide"><img src="https://i.postimg.cc/tCRyZjPm/GRADIENTES4.jpg" alt="T2" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1634942550612-b17823f04936?q=80&w=1080&h=1350&fit=crop" alt="T3" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1080&h=1350&fit=crop" alt="T4" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1080&h=1350&fit=crop" alt="T5" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/SsHDw4mq/luisfanobile_ia_1.jpg" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta pro lado! <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/vT93yKmG/luisfanobile_ia_2.jpg"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/kG8fCH5M/luisfanobile_ia_3.jpg" alt="T3" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/wMJ0zrBq/luisfanobile_ia_4.jpg" alt="T4" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/JnSP98Ry/luisfanobile_ia_5.jpg" alt="T5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-2"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.105 curtidas</div></div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-2"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">1.964 curtidas</div></div>
                 </div>
                 <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover">
+                    <img src="https://i.postimg.cc/667PzjBy/luisfanobile-1.jpg" alt="Static" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
@@ -334,9 +349,9 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                 <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 03</span>
-                    <h2 class="text-display text-4xl md:text-7xl">Tech Pulse</h2>
+                    <h2 class="text-display text-4xl md:text-7xl">GESTÃO DE TRÁFEGO</h2>
                 </div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Identidade dinâmica para o setor tecnológico.</p>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Post carrossel para perfil de gestão de tráfego pago.</p>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
@@ -344,7 +359,7 @@
                     <div class="p-3 flex items-center justify-between border-b border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"><img src="https://i.postimg.cc/sfQpxH5X/sadasd.png" class="w-full h-full object-cover" alt="Profile"></div>
-                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Tech Pulse</span></div>
+                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Brasil</span></div>
                         </div>
                         <i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i>
                     </div>
@@ -352,17 +367,17 @@
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('3', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
                         <div class="absolute inset-y-0 right-3 z-20 flex items-center"><button onclick="scrollCarousel('3', 1)" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
                         <div class="instagram-carousel no-scrollbar" id="carousel-3" data-carousel="3">
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&h=1350&fit=crop" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
-                            <div class="instagram-slide"><img src="https://i.postimg.cc/tCRyZjPm/GRADIENTES4.jpg" alt="T2" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1634942550612-b17823f04936?q=80&w=1080&h=1350&fit=crop" alt="T3" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1080&h=1350&fit=crop" alt="T4" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1080&h=1350&fit=crop" alt="T5" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/YqHv8PQL/Nem_todo_anúncio_serve_pra_vender_de_primeira_Existem_tipos_diferentes_de_anúncios_e_cada_u.jpg" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta pro lado! <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/28D1TtnB/Nem_todo_anúncio_serve_pra_vender_de_primeira_Existem_tipos_diferentes_de_anúncios_e_cada_u_(1).jpg"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/yYHDnG0g/Nem_todo_anúncio_serve_pra_vender_de_primeira_Existem_tipos_diferentes_de_anúncios_e_cada_u_(2).jpg" alt="T3" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/DyTS5N1W/Nem_todo_anúncio_serve_pra_vender_de_primeira_Existem_tipos_diferentes_de_anúncios_e_cada_u_(3).jpg" alt="T4" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/jdbDv1yR/Nem_todo_anúncio_serve_pra_vender_de_primeira_Existem_tipos_diferentes_de_anúncios_e_cada_u_(5).jpg" alt="T5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-3"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.105 curtidas</div></div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-3"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.001 curtidas</div></div>
                 </div>
                 <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover">
+                    <img src="https://i.postimg.cc/rFHF3YrC/trafego-pago-dafy.jpg" alt="Static" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
@@ -372,9 +387,9 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                 <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 04</span>
-                    <h2 class="text-display text-4xl md:text-7xl">Tech Pulse</h2>
+                    <h2 class="text-display text-4xl md:text-7xl">Post Encontraaki</h2>
                 </div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Identidade dinâmica para o setor tecnológico.</p>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Post carrossel explicando produto para loja de e-commerce.</p>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
@@ -382,7 +397,7 @@
                     <div class="p-3 flex items-center justify-between border-b border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"><img src="https://i.postimg.cc/sfQpxH5X/sadasd.png" class="w-full h-full object-cover" alt="Profile"></div>
-                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Tech Pulse</span></div>
+                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Brasil</span></div>
                         </div>
                         <i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i>
                     </div>
@@ -390,17 +405,17 @@
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('4', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
                         <div class="absolute inset-y-0 right-3 z-20 flex items-center"><button onclick="scrollCarousel('4', 1)" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
                         <div class="instagram-carousel no-scrollbar" id="carousel-4" data-carousel="4">
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&h=1350&fit=crop" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1080&h=1350&fit=crop" alt="T2" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1634942550612-b17823f04936?q=80&w=1080&h=1350&fit=crop" alt="T3" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1080&h=1350&fit=crop" alt="T4" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1080&h=1350&fit=crop" alt="T5" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/dt1bMsRw/encontraaki_afiador_1.jpg" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta pro lado! <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/02BLPTZ9/encontraaki_afiador_2.jpg" alt="T2" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/X7zT4Rx4/encontraaki_afiador_3.jpg" alt="T3" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/MKFhqCtW/encontraaki_afiador_4.jpg" alt="T4" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/YqsJM58k/encontraaki_afiador_5.jpg" alt="T5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-4"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.105 curtidas</div></div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-4"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.026 curtidas</div></div>
                 </div>
                 <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover">
+                    <img src="https://i.postimg.cc/sXrkb5mB/grid-encontraaki.jpg" alt="Static" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
@@ -410,9 +425,9 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                 <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 05</span>
-                    <h2 class="text-display text-4xl md:text-7xl">Tech Pulse</h2>
+                    <h2 class="text-display text-4xl md:text-7xl">LOJA BEAUTY</h2>
                 </div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Identidade dinâmica para o setor tecnológico.</p>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Post carrossel explicando novo plano de fidelidade. </p>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
@@ -420,7 +435,7 @@
                     <div class="p-3 flex items-center justify-between border-b border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"><img src="https://i.postimg.cc/sfQpxH5X/sadasd.png" class="w-full h-full object-cover" alt="Profile"></div>
-                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Tech Pulse</span></div>
+                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Brasil</span></div>
                         </div>
                         <i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i>
                     </div>
@@ -428,17 +443,17 @@
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('5', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
                         <div class="absolute inset-y-0 right-3 z-20 flex items-center"><button onclick="scrollCarousel('5', 1)" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
                         <div class="instagram-carousel no-scrollbar" id="carousel-5" data-carousel="5">
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&h=1350&fit=crop" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1080&h=1350&fit=crop" alt="T2" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1634942550612-b17823f04936?q=80&w=1080&h=1350&fit=crop" alt="T3" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1080&h=1350&fit=crop" alt="T4" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1080&h=1350&fit=crop" alt="T5" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/xjKv0MRp/jornada1.jpg" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta pro lado! <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/02PprjXg/jornada2.jpg" alt="T2" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/VLmj5vZQ/jornada3.jpg" alt="T3" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/wTgh3M4Y/jornada4.jpg" alt="T4" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/vHbWDT2d/jornada5.jpg" alt="T5" class="w-full h-full object-cover"></div>
                         </div>
                     </div>
-                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-5"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.105 curtidas</div></div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-5"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">1.456 curtidas</div></div>
                 </div>
                 <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover">
+                    <img src="https://i.postimg.cc/63V8NLX4/jornada-de-vantagens-dafystore.jpg" alt="Static" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
@@ -448,9 +463,11 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
                 <div>
                     <span class="text-red-brand font-mono text-xs mb-2 block uppercase tracking-widest">Case 06</span>
-                    <h2 class="text-display text-4xl md:text-7xl">Tech Pulse</h2>
+                    <h2 class="text-display text-4xl md:text-7xl">LOJA BEAUTY</h2>
                 </div>
-                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Identidade dinâmica para o setor tecnológico.</p>
+                <p class="text-gray-500 text-xs md:text-sm max-w-xs uppercase tracking-wider font-medium">Post carrossel apresentando novos produtos para loja de e-commerce.
+
+</p>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
@@ -458,7 +475,7 @@
                     <div class="p-3 flex items-center justify-between border-b border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden"><img src="https://i.postimg.cc/sfQpxH5X/sadasd.png" class="w-full h-full object-cover" alt="Profile"></div>
-                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Tech Pulse</span></div>
+                            <div class="flex flex-col"><span class="text-[12px] font-bold leading-none">luisfanobile.psd</span><span class="text-[10px] text-gray-500">Brasil</span></div>
                         </div>
                         <i data-lucide="more-horizontal" class="w-5 h-5 text-gray-800"></i>
                     </div>
@@ -466,17 +483,19 @@
                         <div class="absolute inset-y-0 left-3 z-20 flex items-center"><button onclick="scrollCarousel('6', -1)" class="nav-btn"><i data-lucide="chevron-left" class="w-4 h-4"></i></button></div>
                         <div class="absolute inset-y-0 right-3 z-20 flex items-center"><button onclick="scrollCarousel('6', 1)" class="nav-btn"><i data-lucide="chevron-right" class="w-4 h-4"></i></button></div>
                         <div class="instagram-carousel no-scrollbar" id="carousel-6" data-carousel="6">
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1080&h=1350&fit=crop" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1080&h=1350&fit=crop" alt="T2" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1634942550612-b17823f04936?q=80&w=1080&h=1350&fit=crop" alt="T3" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1080&h=1350&fit=crop" alt="T4" class="w-full h-full object-cover"></div>
-                            <div class="instagram-slide"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=1080&h=1350&fit=crop" alt="T5" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/HLcS3jCF/nail_designer_dafy_luisfanobile_6.jpg" alt="T1" class="w-full h-full object-cover"><div class="absolute top-4 right-4 z-10"><div class="swipe-hint">Arrasta pro lado! <i data-lucide="arrow-right" class="w-3 h-3"></i></div></div></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/VNr745c7/nail_designer_dafy_luisfanobile.jpg" alt="T2" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/d0b5fvq5/nail_designer_dafy_luisfanobile_2.jpg" alt="T3" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/CKBvJdVX/nail_designer_dafy_luisfanobile_3.jpg" alt="T4" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/vmgPXDdj/nail_designer_dafy_luisfanobile_4.jpg" alt="T5" class="w-full h-full object-cover"></div>
+                            <div class="instagram-slide"><img src="https://i.postimg.cc/0NMtZrqL/nail_designer_dafy_luisfanobile_5.jpg" alt="T6" class="w-full h-full object-cover"></div>
+
                         </div>
                     </div>
-                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-6"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">2.105 curtidas</div></div>
+                    <div class="p-4 bg-white"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-4 text-gray-800"><i data-lucide="heart" class="w-6 h-6"></i><i data-lucide="message-circle" class="w-6 h-6"></i><i data-lucide="send" class="w-6 h-6"></i></div><div class="flex gap-1" id="dots-6"><div class="indicator-dot active"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div><div class="indicator-dot"></div></div></div><div class="text-[13px] font-bold text-gray-900">3.101 curtidas</div></div>
                 </div>
                 <div class="image-container aspect-square rounded-sm shadow-xl lg:max-w-[420px] w-full">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&h=1000&fit=crop" alt="Static" class="w-full h-full object-cover">
+                    <img src="https://i.postimg.cc/zvKS6PzF/nail-designer-dafy-luisfanobile-todos.jpg" alt="Static" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
@@ -518,6 +537,14 @@
 
     <script>
         lucide.createIcons();
+
+        const cursor = document.getElementById('cursor');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+        }
 
         // Efeito de Digitação
         const word = "SOCIAL MEDIA";
