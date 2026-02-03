@@ -14,6 +14,7 @@
             --whatsapp-green: #25D366;
             --monitor-frame: #2a2a2a; 
             --monitor-rim: rgba(255,255,255,0.15);
+            --phone-frame: #1a1a1a;
         }
 
         html, body {
@@ -70,7 +71,6 @@
 
         .lp-card {
             position: relative;
-            cursor: pointer;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -83,20 +83,25 @@
             }
         }
 
+        /* Overlay apenas para Desktop */
         .lp-card .overlay {
             position: absolute;
             inset: 0;
-            background: rgba(230, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.4s ease;
             z-index: 10;
+            gap: 15px;
         }
 
-        .lp-card:active .overlay, .lp-card:hover .overlay {
-            opacity: 1;
+        @media (min-width: 768px) {
+            .lp-card:hover .overlay {
+                opacity: 1;
+            }
         }
 
         #modal-overlay {
@@ -112,18 +117,15 @@
             flex-direction: column;
         }
 
+        /* --- MONITOR STYLES --- */
         .monitor-wrapper {
             width: 100%;
             max-width: 1100px;
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             transform: scale(0.9);
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        #modal-overlay.active .monitor-wrapper {
-            transform: scale(1);
         }
 
         .monitor-bezel {
@@ -131,9 +133,7 @@
             background: var(--monitor-frame);
             padding: 10px;
             border-radius: 24px;
-            box-shadow: 
-                0 0 0 1px var(--monitor-rim),
-                0 40px 100px -20px rgba(0,0,0,1);
+            box-shadow: 0 0 0 1px var(--monitor-rim), 0 40px 100px -20px rgba(0,0,0,1);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -171,12 +171,7 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .address-bar span {
-            color: #666;
-            font-size: 10px;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.5px;
-        }
+        .address-bar span { color: #666; font-size: 10px; letter-spacing: 0.5px; }
 
         .monitor-screen {
             width: 100%;
@@ -185,124 +180,139 @@
             border-bottom-left-radius: 14px;
             border-bottom-right-radius: 14px;
             overflow-y: auto;
-            overflow-x: hidden;
             position: relative;
-            scrollbar-width: thin;
-            scrollbar-color: var(--brand-red) #111;
         }
 
-        @media (max-width: 768px) {
-            .monitor-bezel { border-radius: 16px; padding: 6px; }
-            .monitor-screen { height: 70vh; }
-            .browser-header { padding: 0 10px; height: 32px; gap: 8px; }
-            .address-bar { display: none; }
-        }
-
-        .monitor-screen::-webkit-scrollbar { width: 4px; }
-        .monitor-screen::-webkit-scrollbar-thumb { background: var(--brand-red); }
-
-        .monitor-bottom-bar {
-            height: 40px;
-            background: var(--monitor-frame);
-            margin-top: -2px;
-            border-bottom-left-radius: 24px;
-            border-bottom-right-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* --- PHONE STYLES --- */
+        .phone-wrapper {
+            display: none;
+            width: 320px;
             position: relative;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            transform: scale(0.9);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .monitor-logo {
-            font-size: 8px;
-            font-weight: 800;
-            letter-spacing: 4px;
-            opacity: 0.3;
-            text-transform: uppercase;
+        .phone-bezel {
+            width: 100%;
+            background: var(--phone-frame);
+            padding: 12px;
+            border-radius: 45px;
+            box-shadow: 0 0 0 2px #333, 0 30px 60px rgba(0,0,0,0.8);
+            position: relative;
+            border: 4px solid #111;
         }
 
-        .power-led {
+        .phone-screen {
+            width: 100%;
+            height: 600px;
+            background: #000;
+            border-radius: 35px;
+            overflow-y: auto;
+            position: relative;
+            scrollbar-width: none;
+        }
+        .phone-screen::-webkit-scrollbar { display: none; }
+
+        .phone-notch {
             position: absolute;
-            right: 30px;
-            width: 4px;
-            height: 4px;
-            background: #27c93f;
-            border-radius: 50%;
-            box-shadow: 0 0 5px #27c93f;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: var(--phone-frame);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 20;
         }
 
-        .monitor-stand {
-            width: 140px;
-            height: 50px;
-            background: linear-gradient(to bottom, #222, #111);
-            margin: 0 auto;
-            clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+        /* Active Modal State */
+        #modal-overlay.active .monitor-wrapper,
+        #modal-overlay.active .phone-wrapper {
+            transform: scale(1);
         }
 
-        .monitor-base {
-            width: 280px;
-            height: 10px;
-            background: #111;
-            border-radius: 12px 12px 4px 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        @media (max-width: 768px) {
-            .monitor-stand, .monitor-base { display: none; }
+        .lp-image-stack img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         #scroll-hint {
             position: absolute;
-            bottom: 60px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 20;
+            z-index: 30;
             background: var(--brand-red);
-            padding: 10px 24px;
+            padding: 8px 16px;
             border-radius: 100px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             pointer-events: none;
-            transition: all 0.5s ease;
-            box-shadow: 0 10px 30px rgba(230, 0, 0, 0.4);
-        }
-
-        .mouse-anim { animation: mouseJump 2s infinite; }
-        @keyframes mouseJump { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-
-        /* Ajuste para imagens coladas */
-        .lp-image-stack img {
-            width: 100%;
-            height: auto;
-            display: block; /* Remove espaços entre imagens */
+            opacity: 1;
+            transition: opacity 0.5s;
+            white-space: nowrap;
         }
 
         .close-monitor {
             position: absolute;
-            top: -60px;
+            top: -50px;
             right: 0;
             color: white;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            opacity: 0.5;
-            transition: all 0.3s;
-            padding: 10px;
+            gap: 8px;
+            opacity: 0.6;
         }
-        .close-monitor:hover { opacity: 1; color: var(--brand-red); }
+
+        .view-btn {
+            width: 100%;
+            max-width: 160px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .view-btn:hover {
+            background: var(--brand-red);
+            border-color: var(--brand-red);
+            transform: scale(1.05);
+        }
+
+        /* Botão específico para a seção mobile exposta */
+        .mobile-view-btn {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.1);
+            padding: 10px 5px;
+            font-size: 9px;
+            flex: 1;
+        }
+
+        .text-red-brand { color: var(--brand-red); }
 
         .ink-fill-container {
             position: relative;
             overflow: hidden;
             z-index: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .ink-fill-container::before {
             content: '';
@@ -316,64 +326,8 @@
             z-index: -1;
         }
         .ink-fill-container:hover::before { transform: scaleX(1); }
+        .ink-fill-container:hover { transform: translateY(-5px); }
         .btn-whatsapp-ink { background: var(--whatsapp-green); color: #fff; border: 2px solid var(--whatsapp-green); }
-/* Adicione este comportamento de escala e pulo que existe na outra página */
-.ink-fill-container {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.ink-fill-container:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: var(--brand-red);
-}
-
-/* Garante que o preenchimento de tinta funcione corretamente */
-.ink-fill-container::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: var(--brand-red);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    z-index: -1;
-}
-
-.ink-fill-container:hover::before {
-    transform: scaleX(1);
-}
-
-/* Classe para a cor da marca */
-.text-red-brand { color: var(--brand-red); }
-
-/* Variante de tinta PRETA para o botão Voltar */
-.ink-fill-container.ink-black::before {
-    background: #000;
-}
-
-.ink-fill-container.ink-black:hover {
-    color: #fff !important; /* Força o texto a ficar branco */
-    border-color: #000;
-}
-
-/* Garante que o texto fique por cima da "tinta" */
-.relative.z-10 {
-    position: relative;
-    z-index: 10;
-}
-
-/* Link de Voltar Estilizado */
-        .back-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 10px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: color 0.3s ease;
-        }
 
     </style>
 </head>
@@ -383,9 +337,6 @@
     <nav class="fixed top-0 w-full z-50 p-4 md:p-6 flex justify-between items-center mix-blend-difference">
         <div class="flex items-center gap-4 md:gap-6">
             <a href="index.html" class="text-lg md:text-xl font-bold tracking-tighter hover:text-red-brand transition uppercase">LUISFANOBILE</a>
-            <a href="index.html" class="flex items-center gap-2 text-[10px] uppercase font-bold tracking-widest border-l border-white/20 pl-4 md:pl-6 hover:text-red-brand transition">
-                <i data-lucide="chevron-left" class="w-3 h-3"></i> Home
-            </a>
         </div>
     </nav>
 
@@ -398,13 +349,12 @@
             </h1>
             <div class="max-w-2xl mt-8 reveal" style="transition-delay: 400ms;">
                 <p class="text-gray-400 text-sm md:text-lg mb-8 leading-relaxed">
-                    Experiência visual de alto impacto. Clique nos projetos para visualizar as secções completas no nosso simulador.
+                    Escolha o formato de visualização para explorar os projetos detalhadamente em nosso simulador.
                 </p>
             </div>
-            <!-- Link secundário de retorno -->
-                    <a href="index.html" class="group flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest hover:text-red-brand transition w-fit">
-                        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i> Voltar para a Home
-                    </a>
+            <a href="index.html" class="group flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest hover:text-red-brand transition w-fit">
+                <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i> Voltar para a Home
+            </a>
         </div>
     </section>
 
@@ -413,8 +363,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             <!-- PROJETO 01 -->
-            <div class="reveal lp-card rounded-xl group" onclick="openLP([
-                'https://i.postimg.cc/Ss1RpDHJ/lp1.jpg',
+            <div class="reveal lp-card rounded-xl group">
+                <!-- Overlay Desktop (Hidden no Mobile) -->
+                <div class="overlay hidden md:flex">
+                    <button onclick="openLP('desktop', [
+                        'https://i.postimg.cc/Ss1RpDHJ/lp1.jpg',
                 'https://i.postimg.cc/Jn4RTZ6T/lp2.jpg',
                 'https://i.postimg.cc/mD2TdCXm/lp3.jpg',
                 'https://i.postimg.cc/ZRKJfp7p/lp4.jpg',
@@ -422,113 +375,149 @@
                 'https://i.postimg.cc/sXD3n76G/lp6.jpg',
                 'https://i.postimg.cc/50NfPL7H/lp7.jpg',
                 'https://i.postimg.cc/635BHnjW/lp8.jpg',
-                'https://i.postimg.cc/ZR74Xn2r/lp9.jpg',
-            ], 'Lash Designer')">
-                <div class="overlay">
-                    <div class="text-center text-white">
-                        <i data-lucide="monitor" class="w-8 h-8 mx-auto mb-2"></i>
-                        <span class="font-bold uppercase tracking-widest text-[10px]">Ver Projeto Full</span>
-                    </div>
+                'https://i.postimg.cc/ZR74Xn2r/lp9.jpg'
+                    ], 'Lash Designer')" class="view-btn">
+                        <i data-lucide="monitor" class="w-4 h-4"></i> Desktop
+                    </button>
+                    <button onclick="openLP('mobile', [
+                        'https://i.postimg.cc/pTN3NKWd/lash_mobile1.jpg',
+                        'https://i.postimg.cc/FRtwt0rb/lash_mobile2.jpg',
+                        'https://i.postimg.cc/JnwSwjrX/lash_mobile3.jpg',
+                        'https://i.postimg.cc/DZVRV1vs/lash_mobile4.jpg',
+                        'https://i.postimg.cc/zBm4mTzR/lash_mobile5.jpg',
+                        'https://i.postimg.cc/QtLvLc8T/lash_mobile6.jpg',
+                        'https://i.postimg.cc/sXFbF5jB/lash_mobile7.jpg',
+                        'https://i.postimg.cc/C1y9ybhR/lash_mobile8.jpg',
+                        'https://i.postimg.cc/FRtwt0rk/lash_mobile9.jpg',
+                        'https://i.postimg.cc/4dCjCpfm/lash_mobile10.jpg'
+                        
+                    ], 'Lash Designer')" class="view-btn">
+                        <i data-lucide="smartphone" class="w-4 h-4"></i> Mobile
+                    </button>
                 </div>
+                <!-- Imagem -->
                 <div class="aspect-[16/10] overflow-hidden bg-[#111]">
-                    <img src="https://i.postimg.cc/FR7J0Hz9/vitrine7.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                    <img src="https://i.postimg.cc/FR7J0Hz9/vitrine7.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-all duration-700">
                 </div>
+                <!-- Conteúdo de Texto + Ações Mobile -->
                 <div class="p-6 bg-[#111]">
                     <span class="text-red-brand font-mono text-[10px] uppercase tracking-widest block mb-2">Health & Beauty</span>
-                    <h3 class="text-xl font-bold">Lash Designer</h3>
+                    <h3 class="text-xl font-bold mb-4">Lash Designer</h3>
+                    
+                    <!-- Botões Visíveis no Mobile -->
+                    <div class="flex md:hidden gap-2">
+                        <button onclick="openLP('desktop', ['https://i.postimg.cc/Ss1RpDHJ/lp1.jpg', 'https://i.postimg.cc/Jn4RTZ6T/lp2.jpg', 'https://i.postimg.cc/mD2TdCXm/lp3.jpg'], 'Lash Designer')" class="view-btn mobile-view-btn">
+                            <i data-lucide="monitor" class="w-3 h-3"></i> Desktop
+                        </button>
+                        <button onclick="openLP('mobile', ['https://i.postimg.cc/Ss1RpDHJ/lp1.jpg', 'https://i.postimg.cc/Jn4RTZ6T/lp2.jpg'], 'Lash Designer')" class="view-btn mobile-view-btn">
+                            <i data-lucide="smartphone" class="w-3 h-3"></i> Mobile
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- PROJETO 02 -->
-            <div class="reveal lp-card rounded-xl group" style="transition-delay: 100ms;" onclick="openLP([
-                'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200',
-                'https://images.unsplash.com/photo-1634942550612-b17823f04936?q=80&w=1200',
-                'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200',
-                'https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=1200',
-                'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1200'
-            ], 'Tech Pulse')">
-                <div class="overlay">
-                    <div class="text-center text-white">
-                        <i data-lucide="monitor" class="w-8 h-8 mx-auto mb-2"></i>
-                        <span class="font-bold uppercase tracking-widest text-[10px]">Ver Projeto Full</span>
-                    </div>
+            <div class="reveal lp-card rounded-xl group" style="transition-delay: 100ms;">
+                <div class="overlay hidden md:flex">
+                    <button onclick="openLP('desktop', ['https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200'], 'Tech Pulse')" class="view-btn">
+                        <i data-lucide="monitor" class="w-4 h-4"></i> Desktop
+                    </button>
+                    <button onclick="openLP('mobile', ['https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800'], 'Tech Pulse')" class="view-btn">
+                        <i data-lucide="smartphone" class="w-4 h-4"></i> Mobile
+                    </button>
                 </div>
                 <div class="aspect-[16/10] overflow-hidden bg-[#111]">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800" class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-all duration-700">
                 </div>
                 <div class="p-6 bg-[#111]">
                     <span class="text-red-brand font-mono text-[10px] uppercase tracking-widest block mb-2">Startup & SaaS</span>
-                    <h3 class="text-xl font-bold">Tech Pulse</h3>
+                    <h3 class="text-xl font-bold mb-4">Tech Pulse</h3>
+                    
+                    <div class="flex md:hidden gap-2">
+                        <button onclick="openLP('desktop', ['https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200'], 'Tech Pulse')" class="view-btn mobile-view-btn">
+                            <i data-lucide="monitor" class="w-3 h-3"></i> Desktop
+                        </button>
+                        <button onclick="openLP('mobile', ['https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800'], 'Tech Pulse')" class="view-btn mobile-view-btn">
+                            <i data-lucide="smartphone" class="w-3 h-3"></i> Mobile
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- PROJETO 03 -->
-            <div class="reveal lp-card rounded-xl group" style="transition-delay: 200ms;" onclick="openLP([
-                'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200',
-                'https://images.unsplash.com/photo-1559925393-8be0ec41b595?q=80&w=1200',
-                'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200',
-                'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1200',
-                'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200'
-            ], 'Lumia Coffee')">
-                <div class="overlay">
-                    <div class="text-center text-white">
-                        <i data-lucide="monitor" class="w-8 h-8 mx-auto mb-2"></i>
-                        <span class="font-bold uppercase tracking-widest text-[10px]">Ver Projeto Full</span>
-                    </div>
+            <div class="reveal lp-card rounded-xl group" style="transition-delay: 200ms;">
+                <div class="overlay hidden md:flex">
+                    <button onclick="openLP('desktop', ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200'], 'Lumia Coffee')" class="view-btn">
+                        <i data-lucide="monitor" class="w-4 h-4"></i> Desktop
+                    </button>
+                    <button onclick="openLP('mobile', ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800'], 'Lumia Coffee')" class="view-btn">
+                        <i data-lucide="smartphone" class="w-4 h-4"></i> Mobile
+                    </button>
                 </div>
                 <div class="aspect-[16/10] overflow-hidden bg-[#111]">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-all duration-700">
                 </div>
                 <div class="p-6 bg-[#111]">
                     <span class="text-red-brand font-mono text-[10px] uppercase tracking-widest block mb-2">Gastronomia</span>
-                    <h3 class="text-xl font-bold">Lumia Coffee</h3>
+                    <h3 class="text-xl font-bold mb-4">Lumia Coffee</h3>
+                    
+                    <div class="flex md:hidden gap-2">
+                        <button onclick="openLP('desktop', ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200'], 'Lumia Coffee')" class="view-btn mobile-view-btn">
+                            <i data-lucide="monitor" class="w-3 h-3"></i> Desktop
+                        </button>
+                        <button onclick="openLP('mobile', ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800'], 'Lumia Coffee')" class="view-btn mobile-view-btn">
+                            <i data-lucide="smartphone" class="w-3 h-3"></i> Mobile
+                        </button>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- MONITOR MODAL SIMULATOR -->
+    <!-- MODAL SIMULATOR -->
     <div id="modal-overlay" onclick="closeLP()">
-        <div class="monitor-wrapper" onclick="event.stopPropagation()">
+        <div class="relative w-full flex justify-center items-center">
             
             <div class="close-monitor" onclick="closeLP()">
                 <i data-lucide="x" class="w-4 h-4"></i> Fechar Preview
             </div>
 
-            <!-- Monitor -->
-            <div class="monitor-bezel">
-                
-                <div id="scroll-hint">
-                    <i data-lucide="mouse-pointer-2" class="w-4 h-4 text-white mouse-anim"></i>
-                    <span class="text-white text-[9px] font-bold uppercase tracking-[0.2em]">Arraste para navegar</span>
-                </div>
-
-                <div class="browser-header">
-                    <div class="flex gap-2">
-                        <div class="dot dot-red" onclick="closeLP()"></div>
-                        <div class="dot dot-yellow"></div>
-                        <div class="dot dot-green"></div>
+            <!-- Frame: Monitor -->
+            <div class="monitor-wrapper" id="monitor-frame-container" onclick="event.stopPropagation()">
+                <div class="monitor-bezel">
+                    <div class="browser-header">
+                        <div class="flex gap-2">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <div class="address-bar"><span id="browser-url-desktop">url</span></div>
                     </div>
-                    <div class="address-bar">
-                        <span id="browser-url">https://luisfanobile.com/view/projeto</span>
+                    <div class="monitor-screen" id="desktop-scroll-area">
+                        <div id="desktop-image-stack" class="lp-image-stack"></div>
                     </div>
-                    <div class="w-14 hidden md:block"></div>
                 </div>
+                <div class="monitor-stand"></div>
+                <div class="monitor-base"></div>
+            </div>
 
-                <div class="monitor-screen" id="monitor-scroll-area">
-                    <!-- Contentor para as imagens coladas -->
-                    <div id="lp-images-stack" class="lp-image-stack"></div>
-                </div>
-
-                <div class="monitor-bottom-bar">
-                    <div class="monitor-logo italic">L F A</div>
-                    <div class="power-led"></div>
+            <!-- Frame: Mobile -->
+            <div class="phone-wrapper" id="phone-frame-container" onclick="event.stopPropagation()">
+                <div class="phone-bezel">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen" id="mobile-scroll-area">
+                        <div id="mobile-image-stack" class="lp-image-stack"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="monitor-stand"></div>
-            <div class="monitor-base"></div>
+            <!-- Hint universal -->
+            <div id="scroll-hint">
+                <i data-lucide="mouse-pointer-2" class="w-4 h-4 text-white animate-bounce"></i>
+                <span class="text-white text-[9px] font-bold uppercase tracking-widest">Role para navegar</span>
+            </div>
+
         </div>
     </div>
 
@@ -540,10 +529,9 @@
             </h2>
             <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
                 <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm flex items-center justify-center gap-3 shadow-xl">
-    Solicitar Orçamento
-    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"> <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
-    </svg>
-</a>
+                    Solicitar Orçamento
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                </a>
                 <a href="index.html" class="px-10 py-5 rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm border-2 border-black hover:bg-black hover:text-white transition">Voltar ao Início</a>
             </div>
         </div>
@@ -554,47 +542,66 @@
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>Luis Felipe Anobile &copy; 2026.</div>
             <div class="flex gap-6">
-                <a href="https://instagram.com/luisfanobile.psd" target="_blank" class="hover:text-white transition">Instagram</a>
-                <a href="https://www.behance.net/luisfeanobile" target="_blank" class="hover:text-white transition">Behance</a>
+                <a href="#" class="hover:text-white transition">Instagram</a>
+                <a href="#" class="hover:text-white transition">Behance</a>
             </div>
         </div>
     </footer>
-
-        <!-- Botão WhatsApp Fixo -->
-    <a href="https://wa.me/5519999708373" target="_blank" class="ink-fill-container btn-whatsapp-ink fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl animate-bounce">
-        <svg class="whatsapp-logo w-6 h-6 md:w-8 md:h-8 fill-white" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.12.553 4.189 1.606 6.006L0 24l6.117-1.604a11.803 11.803 0 005.93 1.597h.005c6.634 0 12.032-5.396 12.035-12.032a11.762 11.762 0 00-3.525-8.497z"/>
-        </svg>
-    </a>
 
     <script>
         lucide.createIcons();
 
         const modal = document.getElementById('modal-overlay');
-        const browserUrl = document.getElementById('browser-url');
-        const scrollArea = document.getElementById('monitor-scroll-area');
         const scrollHint = document.getElementById('scroll-hint');
-        const imageStack = document.getElementById('lp-images-stack');
+        
+        const monitorContainer = document.getElementById('monitor-frame-container');
+        const phoneContainer = document.getElementById('phone-frame-container');
+        
+        const desktopStack = document.getElementById('desktop-image-stack');
+        const mobileStack = document.getElementById('mobile-image-stack');
+        
+        const deskScroll = document.getElementById('desktop-scroll-area');
+        const mobScroll = document.getElementById('mobile-scroll-area');
 
-        function openLP(imgUrls, title) {
-            imageStack.innerHTML = '';
+        function openLP(mode, imgUrls, title) {
+            // Reset visibility
+            monitorContainer.style.display = 'none';
+            phoneContainer.style.display = 'none';
+            desktopStack.innerHTML = '';
+            mobileStack.innerHTML = '';
             
+            // Choose container and stack
+            const activeStack = (mode === 'desktop') ? desktopStack : mobileStack;
+            const activeContainer = (mode === 'desktop') ? monitorContainer : phoneContainer;
+            const activeScroll = (mode === 'desktop') ? deskScroll : mobScroll;
+
+            // Load images
             imgUrls.forEach(url => {
                 const img = document.createElement('img');
                 img.src = url;
                 img.alt = title;
-                imageStack.appendChild(img);
+                activeStack.appendChild(img);
             });
 
-            browserUrl.textContent = `https://luisfanobile.com/cases/${title.toLowerCase().replace(/\s+/g, '-')}`;
+            if(mode === 'desktop') {
+                document.getElementById('browser-url-desktop').textContent = `https://luisfanobile.com/cases/${title.toLowerCase()}`;
+            }
+
+            // Show Modal
             modal.style.display = 'flex';
+            activeContainer.style.display = 'flex';
             document.body.style.overflow = 'hidden'; 
             scrollHint.style.opacity = '1';
             
             setTimeout(() => {
                 modal.classList.add('active');
-                scrollArea.scrollTop = 0; 
-            }, 10);
+                activeScroll.scrollTop = 0; 
+            }, 50);
+
+            // Hide hint on scroll
+            activeScroll.onscroll = () => {
+                if (activeScroll.scrollTop > 50) scrollHint.style.opacity = '0';
+            };
         }
 
         function closeLP() {
@@ -605,12 +612,7 @@
             }, 400);
         }
 
-        scrollArea.addEventListener('scroll', () => {
-            if (scrollArea.scrollTop > 50) {
-                scrollHint.style.opacity = '0';
-            }
-        });
-
+        // Typing effect
         const typingElement = document.getElementById('typing-text');
         const textToType = "Landing Pages";
         let charIdx = 0;
